@@ -66,7 +66,7 @@
     "node-gyp": "^0.13.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.10.21"
   },
   "scripts": {
     "test": "grunt test",
