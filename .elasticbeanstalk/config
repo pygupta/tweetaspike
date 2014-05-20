@@ -1,0 +1,15 @@
+[global]
+ApplicationName=tweetabase
+ApplicationVersionName=Sample Application
+AwsCredentialFile=/Users/dash/.elasticbeanstalk/aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.us-west-2.amazonaws.com
+EnvironmentName=tweetabase-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=/Users/dash/Apps/tweetabase/.elasticbeanstalk/optionsettings.tweetabase-env
+RdsEnabled=No
+Region=us-west-2
+ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
+SolutionStack=64bit Amazon Linux 2014.03 v1.0.2 running Node.js
+

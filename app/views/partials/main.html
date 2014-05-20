@@ -1,0 +1,27 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="container">
+  <h2>My Tweets</h2>
+
+  <!-- Tweets input -->
+  <form role="form" ng-submit="addTweet()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="myTweet" placeholder="What needs to be tweet'd?" class="form-control">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+    </div>
+  </form>
+  <p></p>
+
+  <div ui-sortable ng-model="tweets">
+    <p class="input-group" ng-repeat="myTweet in myTweets track by $index" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="myTweet" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="removeTweet($index)" aria-label="Remove">X</button>
+      </span>
+    </p>
+  </div>
+</div>

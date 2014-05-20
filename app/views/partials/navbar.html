@@ -1,0 +1,10 @@
+<div class="header" ng-controller="NavbarCtrl">
+  <h5 class="text-muted">Welcome, {{uid}}</h5>
+  <ul class="nav nav-pills pull-right">
+    <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+        <a ng-if="item.title == 'Logout'" ng-href="#" ng-click="logout()">{{item.title}}</a>
+        <a ng-if="item.title != 'Logout'" ng-href="{{item.link}}">{{item.title}}</a>
+    </li>
+  </ul>
+  <h3 class="text-muted">Tweetabase</h3>
+</div>
