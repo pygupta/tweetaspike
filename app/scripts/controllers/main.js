@@ -10,8 +10,8 @@ angular.module('tweetabaseApp')
       $http.post('/api/retrieveTweets', {uid: uid}).success(function(response) {
         // console.log('/api/retrieveTweets response: ' + JSON.stringify(response));
         if (response.status === 'Ok')	{
-        	// console.log(response.tweets);
-        	$scope.myTweets = response.tweets;
+					// console.log(response.tweets);
+					$scope.myTweets = response.tweets;
         }
       });
 		};

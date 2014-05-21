@@ -1,23 +1,22 @@
 'use strict';
 
 angular.module('tweetabaseApp')
-  .controller('RegisterCtrl', ['$scope', '$location', 'user',  function ($scope, $location, user) {
+  .controller('FollowingCtrl', ['$scope', '$location', 'user',  function ($scope, $location, user){
     $scope.user = {};
-    $scope.errors = null;
+    $scope.message = null;
 
-    $scope.register = function(form) {
+    $scope.checkUsername = function(form) {
       $scope.submitted = true;
       
       if(form.$valid) {
-        user.create({
-          email: $scope.user.email,
-          password: $scope.user.password
+        user.checkUsername({
+          email: $scope.user.email
         }, function(response) {
 					// console.log('auth.login callback: ' + JSON.stringify(response));
 					if (response && response.status === 'Ok') {
-						$location.path('/home');
+	          $scope.message = 'You are now following ' + $scope.user.email + '!';
 					} else {
-	          $scope.errors = response.message;
+	          $scope.message = response.message;
 					}
         });
         // .then( function() {
@@ -31,15 +30,4 @@ angular.module('tweetabaseApp')
       }
     };
 
-    $scope.batchCreate = function() {
-      for (var i = 1; i < 10000; i++) {
-        user.create({
-          email: 'usr'+i,
-          password: 'usr'+i
-        });
-      }
-    };
-
-//    $scope.batchCreate();
-
-  }]);
+	}]);

@@ -30,6 +30,16 @@ tweetabaseApp
         controller: 'RegisterCtrl',
         authenticate: false
       })
+      .when('/following', {
+        templateUrl: 'partials/following.html',
+        controller: 'FollowingCtrl',
+        authenticate: true
+      })
+      .when('/followers', {
+        templateUrl: 'partials/followers.html',
+        controller: 'FollowersCtrl',
+        authenticate: true
+      })
       .otherwise({
         redirectTo: '/home'
       });

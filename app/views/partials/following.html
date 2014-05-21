@@ -1,0 +1,21 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="container">
+
+  <!-- Tweet input -->
+  <form class="form" name="form" novalidate ng-submit="checkUsername(form)">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="user.email" placeholder="Enter handle" class="form-control">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Go">
+        </span>
+      </div>
+    </div>
+  </form>
+  <div class="form-group text-center">
+    <h4 class="help-block">{{ message }}</h4>
+  </div>
+  <p></p>
+
+</div>

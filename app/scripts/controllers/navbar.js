@@ -7,12 +7,12 @@ angular.module('tweetabaseApp')
       'link': '/home',
       'onclick': ''
     }, {
-      'title': 'Followers',
-      'link': '/followers',
-      'onclick': ''
-    }, {
       'title': 'Following',
       'link': '/following',
+      'onclick': ''
+    }, {
+      'title': 'Followers',
+      'link': '/followers',
       'onclick': ''
     }, {
       'title': 'Logout',

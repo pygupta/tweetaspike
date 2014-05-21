@@ -34,8 +34,23 @@ angular.module('tweetabaseApp')
       // return deferred.promise;
     };
 
+    var checkUsername = function(user, callback) {
+      var cb = callback || angular.noop;
+      // var deferred = $q.defer();
+      ///Check username 
+      $http.post('/api/checkUsername', {username: user.email}).success(function(response) {
+        if (response.status === 'Ok'){
+          return cb({status : 'Ok'});
+        } else {
+          return cb({message : 'Invalid handle. Please try another one!'});
+        }
+      });
+      // return deferred.promise;
+    };
+
     return {
-      create: create
+      create: create,
+      checkUsername: checkUsername
     };
 
   }]);
