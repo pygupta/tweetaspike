@@ -34,7 +34,7 @@ tweetabaseApp
         redirectTo: '/home'
       });
       
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     // Intercept 401s and 403s and redirect to login
     $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
