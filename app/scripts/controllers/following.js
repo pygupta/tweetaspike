@@ -17,34 +17,35 @@ angular.module('tweetabaseApp')
 					// console.log(response.following);
 					$scope.myFollowingList = response.following;
         }
-        console.log($scope.myFollowingList);
+        // console.log($scope.myFollowingList);
 			});
 		};
 
 		$scope.retrieveFollowing();
 
-    $scope.checkUsername = function(form) {
+    $scope.follow = function(form) {
       $scope.submitted = true;
       
       if(form.$valid) {
         user.checkUsername({
           email: $scope.user.email
         }, function(response) {
-					console.log('user.checkUsername callback: ' + JSON.stringify(response));
+					// console.log('user.checkUsername callback: ' + JSON.stringify(response));
 					if (response && response.status === 'Ok') {
 
 						///TODO: only allow unique followers
 
-						var newFollowing = $scope.user.email;
-						$scope.myFollowingList.unshift(newFollowing);
-						
+						var toFollow = $scope.user.email;
+						$scope.myFollowingList.unshift(toFollow);
+
 						following.follow({
 								uid: uid,
-								followingList: $scope.myFollowingList
+								followingList: $scope.myFollowingList,
+								toFollow: toFollow
 							}, function(fResponse)	{
 								// console.log('following.follow callback: ' + JSON.stringify(fResponse));
 								if (fResponse && fResponse.status === 'Ok') {
-									$scope.message = 'You are now following ' + newFollowing + '!';
+									$scope.message = 'You are now following ' + toFollow + '!';
 									$scope.user.email = '';
 								}
 								else	{
@@ -67,5 +68,18 @@ angular.module('tweetabaseApp')
         // });
       }
     };
+
+		$scope.unfollow = function (index) {
+			var toUnfollow = $scope.myFollowingList[index];
+			$scope.myFollowingList.splice(index,1);
+			following.unfollow({
+					uid: uid,
+					followingList: $scope.myFollowingList,
+					toUnfollow: toUnfollow
+				}, function(fResponse)	{
+					// console.log('following.unfollow callback: ' + JSON.stringify(fResponse));
+					$scope.message = 'You are no longer following ' + toUnfollow + '!';
+				});
+		};
 
 	}]);

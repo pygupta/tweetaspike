@@ -1,8 +1,16 @@
 <div ng-include="'partials/navbar'"></div>
 
-	<div class="container text-center">
-		<h4 class="help-block">Coming Soon!</h4>
-	</div>
-	<p></p>
+<div class="container">
+
+  <h3>My Followers</h3>
+
+  <div ui-sortable ng-model="myFollowersList">
+    <p class="input-group" ng-repeat="myFollower in myFollowersList track by $index" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="myFollower" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="showTweets($index)" aria-label="Remove">&raquo;</button>
+      </span>
+    </p>
+  </div>
 
 </div>
