@@ -18,4 +18,15 @@
   </div>
   <p></p>
 
+  <h3>I'm following</h3>
+
+  <div ui-sortable ng-model="myFollowingList">
+    <p class="input-group" ng-repeat="myFollowing in myFollowingList track by $index" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="myFollowing" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="unfollow($index)" aria-label="Remove">X</button>
+      </span>
+    </p>
+  </div>
+
 </div>

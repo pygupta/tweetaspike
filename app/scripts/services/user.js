@@ -27,7 +27,7 @@ angular.module('tweetabaseApp')
           });
         } else {
           ///duplicate username
-          return cb({message : 'Username is alreay taken. Please try again!'});
+          return cb({message : 'Username is already taken. Please try again!'});
         }
       });
 
