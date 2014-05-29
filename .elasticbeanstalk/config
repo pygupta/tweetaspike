@@ -12,3 +12,4 @@ RdsEnabled=No
 Region=us-west-2
 ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
 SolutionStack=64bit Amazon Linux 2014.03 v1.0.2 running Node.js
+
