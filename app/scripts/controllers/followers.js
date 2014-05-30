@@ -7,6 +7,7 @@ angular.module('tweetabaseApp')
 		$scope.myFollowersList = [];
     $scope.user = {};
     $scope.message = null;
+    $scope.oneAtATime = true;
 
 		$scope.retrieveFollowers = function	() {
 			followers.retrieveFollowers({

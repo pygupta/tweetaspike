@@ -5,12 +5,14 @@
   <h3>My Followers</h3>
 
   <div ui-sortable ng-model="myFollowersList">
-    <p class="input-group" ng-repeat="myFollower in myFollowersList track by $index" style="padding:5px 10px; cursor: move;">
-      <input type="text" ng-model="myFollower" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-danger" ng-click="showTweets($index)" aria-label="Remove">&raquo;</button>
-      </span>
-    </p>
+	  <accordion close-others="oneAtATime">
+			<accordion-group ng-repeat="myFollower in myFollowersList track by $index" is-open="status.open">
+					<accordion-heading>
+						{{myFollower}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				  </accordion-heading>
+					{{myFollower}}'s tweets will show up here... 	
+			</accordion-group>
+		</accordion>
   </div>
 
 </div>

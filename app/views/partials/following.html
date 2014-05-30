@@ -21,12 +21,15 @@
   <h3>I'm following</h3>
 
   <div ui-sortable ng-model="myFollowingList">
-    <p class="input-group" ng-repeat="myFollowing in myFollowingList track by $index" style="padding:5px 10px; cursor: move;">
-      <input type="text" ng-model="myFollowing" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-danger" ng-click="unfollow($index)" aria-label="Remove">X</button>
-      </span>
-    </p>
+    <accordion close-others="oneAtATime">
+      <accordion-group ng-repeat="myFollowee in myFollowingList track by $index" is-open="status.open">
+          <accordion-heading>
+            {{myFollowee}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+          </accordion-heading>
+          {{myFollowee}}'s tweets will show up here...  
+          <button class="btn btn-danger pull-right" ng-click="unfollow($index)" aria-label="Remove">X</button>
+      </accordion-group>
+    </accordion>
   </div>
 
 </div>
