@@ -23,7 +23,8 @@ angular.module('tweetabaseApp')
 		}, true);
 
 		$scope.addTweet = function () {
-			$scope.myTweets.unshift($scope.myTweet);
+			var tweetObject = {tweet: $scope.myTweet, ts: new Date()};
+			$scope.myTweets.unshift(tweetObject);
 			$scope.myTweet = '';
       $http.post('/api/updateTweets', {uid: uid, tweets: $scope.myTweets}).success(function(response) {
         // console.log('/api/updateTweets response: ' + JSON.stringify(response));

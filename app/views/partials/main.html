@@ -19,7 +19,8 @@
 
   <div ui-sortable ng-model="tweets">
     <p class="input-group" ng-repeat="myTweet in myTweets track by $index" style="padding:5px 10px; cursor: move;">
-      <input type="text" ng-model="myTweet" class="form-control">
+      <input type="text" ng-model="myTweet.tweet" class="form-control" disabled=disabled>
+      <span am-time-ago="myTweet.ts"></span>
       <span class="input-group-btn">
         <button class="btn btn-danger" ng-click="removeTweet($index)" aria-label="Remove">X</button>
       </span>

@@ -6,7 +6,9 @@ var tweetabaseApp = angular.module('tweetabaseApp', [
   'ngSanitize',
   'ngRoute',
   'ui.sortable',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'angularMoment',
+  'snap'
 ]);
 
 tweetabaseApp
@@ -88,3 +90,4 @@ tweetabaseApp
       }
     });
   }]);
+
