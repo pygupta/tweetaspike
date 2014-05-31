@@ -4,13 +4,16 @@
 
   <h3>My Followers</h3>
 
-  <div ui-sortable ng-model="myFollowersList">
+  <div ng-model="myFollowersList">
 	  <accordion close-others="oneAtATime">
-			<accordion-group ng-repeat="myFollower in myFollowersList track by $index" is-open="status.open">
+			<accordion-group ng-repeat="myFollower in myFollowersList track by $index" is-open="status.open" ng-click="retrieveFollowerTweets($index)">
 					<accordion-heading>
-						{{myFollower}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						{{myFollower.handle}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 				  </accordion-heading>
-					{{myFollower}}'s tweets will show up here... 	
+			    <p ng-repeat="tweets in myFollower.tweets track by $index">
+			    	<span>{{tweets.tweet}}</span>
+			    	<span class="pull-right">{{tweets.ts | amCalendar}}</span>
+			    </p>
 			</accordion-group>
 		</accordion>
   </div>

@@ -50,10 +50,27 @@ angular.module('tweetabaseApp')
       // return deferred.promise;
     };
 
+    var retrieveFolloweeTweets = function(user, callback) {
+      var cb = callback || angular.noop;
+      // var deferred = $q.defer();
+
+      $http.post('/api/retrieveTweets', {uid: user.uid}).success(function(response) {
+        // console.log('/api/retrieveTweets response: ' + JSON.stringify(response));
+        if (response.status === 'Ok'){
+          return cb({status : 'Ok', tweets: response.tweets});
+        } else {
+          return cb();
+        }
+      });
+
+      // return deferred.promise;
+    };
+
     return {
       retrieveFollowing: retrieveFollowing,
       follow: follow,
-      unfollow: unfollow
+      unfollow: unfollow,
+      retrieveFolloweeTweets: retrieveFolloweeTweets
     };
 
   }]);

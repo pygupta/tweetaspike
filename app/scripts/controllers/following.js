@@ -8,7 +8,6 @@ angular.module('tweetabaseApp')
     $scope.user = {};
     $scope.message = null;
     $scope.oneAtATime = true;
-    $scope.open = false;
 
 		$scope.retrieveFollowing = function	() {
 			following.retrieveFollowing({
@@ -16,8 +15,10 @@ angular.module('tweetabaseApp')
 			},	function(response)	{
         // console.log('/api/retrieveFollowing response: ' + JSON.stringify(response));
         if (response && response.status === 'Ok' && response.following !== undefined)	{
-					// console.log(response.following);
-					$scope.myFollowingList = response.following;
+					angular.forEach(response.following, function(value) {
+						// console.log(value);
+						$scope.myFollowingList.push({handle: value.handle, tweets: []});
+					});
         }
         // console.log($scope.myFollowingList);
 			});
@@ -35,7 +36,7 @@ angular.module('tweetabaseApp')
 					// console.log('user.checkUsername callback: ' + JSON.stringify(response));
 					if (response && response.status === 'Ok') {
 
-						///TODO: only allow unique followers
+						///TODO: only allow unique followees
 
 						var toFollow = $scope.user.email;
 						$scope.myFollowingList.unshift(toFollow);
@@ -82,6 +83,24 @@ angular.module('tweetabaseApp')
 					// console.log('following.unfollow callback: ' + JSON.stringify(fResponse));
 					$scope.message = 'You are no longer following ' + toUnfollow + '!';
 				});
+		};
+
+		$scope.retrieveFolloweeTweets = function(index)	{
+			var followee = $scope.myFollowingList[index];
+			// console.log(followee);
+			if (followee !== undefined && followee.tweets.length === 0)	{
+				//retrieve followee's tweets
+
+				following.retrieveFolloweeTweets({
+					uid: followee.handle
+				},	function(response)	{
+	        if (response && response.status === 'Ok' && response.tweets !== undefined)	{
+						followee.tweets = response.tweets;
+	        }
+	        // console.log($scope.myFollowingList);
+				});
+
+			}
 		};
 
 	}]);

@@ -40,16 +40,27 @@ angular.module('tweetabaseApp')
 			///TODO
 		};
 
-		var showTweets = function(index)	{
-			console.log('show tweets for ' + index);
-			///TODO
+		var retrieveFollowerTweets = function(user, callback)	{
+			var cb = callback || angular.noop;
+			// var deferred = $q.defer();
+
+			$http.post('/api/retrieveTweets', {uid: user.uid}).success(function(response) {
+				// console.log('/api/retrieveTweets response: ' + JSON.stringify(response));
+				if (response.status === 'Ok'){
+					return cb({status : 'Ok', tweets: response.tweets});
+				} else {
+					return cb();
+				}
+			});
+
+			// return deferred.promise;
 		};
 
 		return {
 			retrieveFollowers: retrieveFollowers,
 			add: add,
 			remove: remove,
-			showTweets: showTweets
+			retrieveFollowerTweets: retrieveFollowerTweets
 		};
 
 	}]);

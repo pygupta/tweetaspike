@@ -20,14 +20,17 @@
 
   <h3>I'm following</h3>
 
-  <div ui-sortable ng-model="myFollowingList">
+  <div ng-model="myFollowingList">
     <accordion close-others="oneAtATime">
-      <accordion-group ng-repeat="myFollowee in myFollowingList track by $index" is-open="status.open">
+      <accordion-group ng-repeat="myFollowee in myFollowingList track by $index" is-open="status.open" ng-click="retrieveFolloweeTweets($index)">
           <accordion-heading>
-            {{myFollowee}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            {{myFollowee.handle}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
           </accordion-heading>
-          {{myFollowee}}'s tweets will show up here...  
-          <button class="btn btn-danger pull-right" ng-click="unfollow($index)" aria-label="Remove">X</button>
+          <p ng-repeat="tweets in myFollowee.tweets track by $index">
+            <span>{{tweets.tweet}}</span>
+            <span class="pull-right">{{tweets.ts | amCalendar}}</span>
+          </p>
+          <p class="pull-right"><button class="btn btn-danger" ng-click="unfollow($index)" aria-label="Remove">X</button></p>
       </accordion-group>
     </accordion>
   </div>
