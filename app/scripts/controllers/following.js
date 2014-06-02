@@ -10,17 +10,14 @@ angular.module('tweetabaseApp')
     $scope.oneAtATime = true;
 
 		$scope.retrieveFollowing = function	() {
+			$scope.myFollowingList = [];
 			following.retrieveFollowing({
 				uid: uid
 			},	function(response)	{
         // console.log('/api/retrieveFollowing response: ' + JSON.stringify(response));
         if (response && response.status === 'Ok' && response.following !== undefined)	{
-					angular.forEach(response.following, function(value) {
-						// console.log(value);
-						$scope.myFollowingList.push({handle: value.handle, tweets: []});
-					});
+					$scope.myFollowingList = response.following;
         }
-        // console.log($scope.myFollowingList);
 			});
 		};
 
@@ -39,7 +36,8 @@ angular.module('tweetabaseApp')
 						///TODO: only allow unique followees
 
 						var toFollow = $scope.user.email;
-						$scope.myFollowingList.unshift(toFollow);
+						$scope.myFollowingList.unshift({handle: toFollow, tweets:[]});
+						// console.log($scope.myFollowingList);
 
 						following.follow({
 								uid: uid,
@@ -74,6 +72,7 @@ angular.module('tweetabaseApp')
 
 		$scope.unfollow = function (index) {
 			var toUnfollow = $scope.myFollowingList[index];
+			console.log(toUnfollow);
 			$scope.myFollowingList.splice(index,1);
 			following.unfollow({
 					uid: uid,
@@ -81,7 +80,7 @@ angular.module('tweetabaseApp')
 					toUnfollow: toUnfollow
 				}, function(fResponse)	{
 					// console.log('following.unfollow callback: ' + JSON.stringify(fResponse));
-					$scope.message = 'You are no longer following ' + toUnfollow + '!';
+					$scope.message = 'You are no longer following ' + toUnfollow.handle + '!';
 				});
 		};
 

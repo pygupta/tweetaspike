@@ -20,7 +20,7 @@
 
   <h3>I'm following</h3>
 
-  <div ng-model="myFollowingList">
+  <div>
     <accordion close-others="oneAtATime">
       <accordion-group ng-repeat="myFollowee in myFollowingList track by $index" is-open="status.open" ng-click="retrieveFolloweeTweets($index)">
           <accordion-heading>
