@@ -24,6 +24,23 @@ angular.module('tweetabaseApp')
 		$scope.retrieveFollowing();
 
     $scope.follow = function(form) {
+
+    	//Cannot follow yourself
+			if (uid === $scope.user.email)  {
+				$scope.message = 'You cannot follow yourself!';
+				$scope.user.email = '';
+				return;
+			}
+
+			//Only allow unique followees
+			for (var i = 0; i < $scope.myFollowingList.length; i++)  {
+				if ($scope.myFollowingList[i].handle === $scope.user.email)  {
+					$scope.message = 'You are already following ' + $scope.user.email + '!';
+					$scope.user.email = '';
+					return;
+				}
+			}
+
       $scope.submitted = true;
       
       if(form.$valid) {
@@ -32,9 +49,6 @@ angular.module('tweetabaseApp')
         }, function(response) {
 					// console.log('user.checkUsername callback: ' + JSON.stringify(response));
 					if (response && response.status === 'Ok') {
-
-						///TODO: only allow unique followees
-
 						var toFollow = $scope.user.email;
 						$scope.myFollowingList.unshift({handle: toFollow, tweets:[]});
 						// console.log($scope.myFollowingList);
