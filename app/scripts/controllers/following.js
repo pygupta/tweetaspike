@@ -71,7 +71,7 @@ angular.module('tweetabaseApp')
     };
 
 		$scope.unfollow = function (index) {
-			var toUnfollow = $scope.myFollowingList[index];
+			var toUnfollow = $scope.myFollowingList[index].handle;
 			console.log(toUnfollow);
 			$scope.myFollowingList.splice(index,1);
 			following.unfollow({
@@ -80,7 +80,7 @@ angular.module('tweetabaseApp')
 					toUnfollow: toUnfollow
 				}, function(fResponse)	{
 					// console.log('following.unfollow callback: ' + JSON.stringify(fResponse));
-					$scope.message = 'You are no longer following ' + toUnfollow.handle + '!';
+					$scope.message = 'You are no longer following ' + toUnfollow + '!';
 				});
 		};
 
