@@ -74,6 +74,27 @@ body {
     vertical-align: top;
 }
 
+.nav-lines-btn { 
+    position: relative;         
+    margin-top:2%; 
+    border: 2px solid black;
+    border-radius: 2px; 
+    height: 36px; 
+    width:40px;
+    text-decoration: none;
+    outline: none;
+}
+#lines:before { 
+    border-bottom: 10px double black;
+    border-top: 0px solid black;    
+    content:"";
+    height: 5px; 
+    position: absolute; 
+    right:3px;  
+    top: 4px; 
+    width:30px; 
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {

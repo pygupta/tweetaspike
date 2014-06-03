@@ -20771,6 +20771,48 @@ body {
   vertical-align: top;
 }
 
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000377;
+  }
+}
+
+.nav-lines-btn {
+  position: relative;
+  margin-top: 2%;
+  border: 2px solid black;
+  border-radius: 2px;
+  height: 36px;
+  width: 40px;
+  text-decoration: none;
+  outline: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000387;
+  }
+}
+
+#lines:before {
+  border-bottom: 10px double black;
+  border-top: 0px solid black;
+  content: "";
+  height: 5px;
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  width: 30px;
+}
+
 /* Responsive: Portrait tablets and up */
 
 @media screen and (min-width: 768px) {
@@ -20780,7 +20822,7 @@ body {
     }
 
     line {
-      font-family: \0000379;
+      font-family: \00003100;
     }
 }
 
@@ -20796,7 +20838,7 @@ body {
     }
 
     line {
-      font-family: \0000386;
+      font-family: \00003107;
     }
 }
 
@@ -20815,7 +20857,7 @@ body {
     }
 
     line {
-      font-family: \0000391;
+      font-family: \00003112;
     }
 }
 
@@ -20831,7 +20873,7 @@ body {
     }
 
     line {
-      font-family: \0000395;
+      font-family: \00003116;
     }
 }
 
