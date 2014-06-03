@@ -95,7 +95,7 @@ angular.module('tweetabaseApp')
 				backdrop: true,
 				resolve: {
 					options: function()	{
-						return {header: 'Unfollow ' + $scope.toUnfollow, body: 'Are you sure you want to unfollow ' + $scope.toUnfollow + '?', fn: '$scope.options.parent.unfollow()'};
+						return {header: 'Unfollow ' + $scope.toUnfollow, body: 'Are you sure you want to unfollow ' + $scope.toUnfollow + '?', parent: $scope, fn: '$scope.options.parent.unfollow()'};
 					},
 				}
 			});
