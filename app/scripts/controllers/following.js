@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('tweetabaseApp')
-  .controller('FollowingCtrl', ['$scope', '$location', 'user', 'following', 'localStorageService', function ($scope, $location, user, following, localStorageService){
+  .controller('FollowingCtrl', ['$scope', '$location', 'user', 'following', 'localStorageService', '$modal', function ($scope, $location, user, following, localStorageService, $modal){
 
 		var uid = localStorageService.get('uid');
+		var modalInstance = null;
 		$scope.myFollowingList = [];
     $scope.user = {};
     $scope.message = null;
     $scope.oneAtATime = true;
+    $scope.toUnfollow = null;
 
 		$scope.retrieveFollowing = function	() {
 			$scope.myFollowingList = [];
@@ -25,7 +27,7 @@ angular.module('tweetabaseApp')
 
     $scope.follow = function(form) {
 
-    	//Cannot follow yourself
+			//Cannot follow yourself
 			if (uid === $scope.user.email)  {
 				$scope.message = 'You cannot follow yourself!';
 				$scope.user.email = '';
@@ -84,17 +86,29 @@ angular.module('tweetabaseApp')
       }
     };
 
-		$scope.unfollow = function (index) {
-			var toUnfollow = $scope.myFollowingList[index].handle;
-			console.log(toUnfollow);
-			$scope.myFollowingList.splice(index,1);
+		$scope.unfollowConfirmation = function (index) {
+			$scope.toUnfollowIndex = index;
+			$scope.toUnfollow = $scope.myFollowingList[$scope.toUnfollowIndex].handle;
+			modalInstance = $modal.open({
+				templateUrl: 'partials/confirmation_modal.html',
+				controller: 'ModalInstanceCtrl',
+				backdrop: true,
+				resolve: {
+					options: function()	{
+						return {header: 'Unfollow ' + $scope.toUnfollow, body: 'Are you sure you want to unfollow ' + $scope.toUnfollow + '?', fn: '$scope.options.parent.unfollow()'};
+					},
+				}
+			});
+		};
+
+		$scope.unfollow = function () {
+			$scope.myFollowingList.splice($scope.toUnfollowIndex,1);
 			following.unfollow({
 					uid: uid,
 					followingList: $scope.myFollowingList,
-					toUnfollow: toUnfollow
+					toUnfollow: $scope.toUnfollow
 				}, function(fResponse)	{
-					// console.log('following.unfollow callback: ' + JSON.stringify(fResponse));
-					$scope.message = 'You are no longer following ' + toUnfollow + '!';
+					$scope.message = 'You are no longer following ' + $scope.toUnfollow + '!';
 				});
 		};
 
@@ -115,5 +129,20 @@ angular.module('tweetabaseApp')
 
 			}
 		};
+	}]);
 
+angular.module('tweetabaseApp')
+  .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'options', function ($scope, $modalInstance, options){
+		$scope.options = options;
+
+	  $scope.yes = function () {
+			$modalInstance.close();
+			if ($scope.options.fn !== undefined)	{
+				eval($scope.options.fn);
+			}
+	  };
+
+	  $scope.no = function () {
+	    $modalInstance.dismiss('cancel');
+		};
 	}]);
