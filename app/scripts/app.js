@@ -9,10 +9,14 @@ var tweetabaseApp = angular.module('tweetabaseApp', [
   'LocalStorageModule',
   'angularMoment',
   'snap',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'btford.socket-io'
 ]);
 
 tweetabaseApp
+  .factory('socket', function (socketFactory) {
+    return socketFactory();
+  })
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('as');
   }])
