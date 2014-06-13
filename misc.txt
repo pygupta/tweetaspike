@@ -19,3 +19,9 @@ scp -i ~/Desktop/aerospike.pem aerospike-management-console-3.3.1.all.x86_64.deb
     "karma-phantomjs-launcher": "~0.1.1",
     "karma": "~0.10.9",
     "karma-ng-html2js-preprocessor": "~0.1.0",
+
+//Removed the following from env.config
+
+      echo "npm install'ing aerospike"
+      /opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin/npm install aerospike
+      echo "done npm install'ing aerospike"
