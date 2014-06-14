@@ -22,6 +22,33 @@ scp -i ~/Desktop/aerospike.pem aerospike-management-console-3.3.1.all.x86_64.deb
 
 //Removed the following from env.config
 
+files:
+  "/opt/elasticbeanstalk/hooks/appdeploy/pre/50npm.sh" :
+    mode: "000775"
+    owner: root
+    group: root
+    content: |
+      #!/bin/bash          
+      function error_exit
+      {
+        eventHelper.py --msg "$1" --severity ERROR
+        exit $2
+      }
+
+      export HOME=/home/ec2-user 
+      echo $HOME
+
+      OUT=$(/opt/elasticbeanstalk/containerfiles/ebnode.py --action npm-install 2>&1) || error_exit "Failed to run npm install.  $OUT" $?
+      echo $OUT
+  "/opt/elasticbeanstalk/hooks/appdeploy/post/npm-install-as.sh" :
+    mode: "000775"
+    owner: root
+    group: root
+    content: |
+      #!/bin/bash          
+      cd /var/app/current
+      export HOME=/home/ec2-user 
+      echo $HOME
       echo "npm install'ing aerospike"
       /opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin/npm install aerospike
       echo "done npm install'ing aerospike"
