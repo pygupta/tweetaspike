@@ -144,8 +144,8 @@ function randomDate(start, end) {
 }
 
 function getUsersPosts()  {
-  var start = Math.floor((Math.random() * 1) + 1);
-  var end = Math.floor((Math.random() * 100) + 1);
+  var start = Math.floor((Math.random() * 21000) + 1);
+  var end = Math.floor((Math.random() * 30000) + 1);
   var keys = [];
   var tweets;
 
@@ -172,5 +172,5 @@ function getUsersPosts()  {
   });
 }
 
-// seedUsersPosts();
+//seedUsersPosts();
 getUsersPosts();

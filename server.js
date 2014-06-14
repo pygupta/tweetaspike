@@ -1,6 +1,7 @@
 'use strict';
 
-var express = require('express');
+var express = require('express'),
+	http = require('http');
 
 /**
  * Main application file
@@ -13,11 +14,27 @@ var config = require('./lib/config/config');
 
 // Setup Express
 var app = express();
+var http = http.Server(app);
+var io = require('socket.io')(http);
+
 require('./lib/config/express')(app);
 require('./lib/routes')(app);
 
+// Socket.io Communication
+io.on('connection', function(socket) {
+  console.log('a client connected');
+
+	socket.on('tweet', function (data) {
+	  // console.log("new tweet: " + JSON.stringify(data));
+
+	  //use io.sockets.emit to send a message to all clients with the message category of 'broadcast' - 
+	  //which is our key to know on the client-side that a new message is being broadcasted
+	  io.sockets.emit('broadcast', data);
+	});
+});
+
 // Start server
-app.listen(config.port, config.ip, function () {
+http.listen(config.port, config.ip, function () {
   console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 

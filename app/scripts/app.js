@@ -14,9 +14,6 @@ var tweetabaseApp = angular.module('tweetabaseApp', [
 ]);
 
 tweetabaseApp
-  .factory('socket', function (socketFactory) {
-    return socketFactory();
-  })
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('as');
   }])

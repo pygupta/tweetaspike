@@ -91,7 +91,7 @@ angular.module('tweetabaseApp')
 			$scope.toUnfollow = $scope.myFollowingList[$scope.toUnfollowIndex].handle;
 			modalInstance = $modal.open({
 				templateUrl: 'partials/confirmation_modal.html',
-				controller: 'ModalInstanceCtrl',
+				controller: 'ConfirmationModalInstanceCtrl',
 				backdrop: true,
 				resolve: {
 					options: function()	{
@@ -132,7 +132,7 @@ angular.module('tweetabaseApp')
 	}]);
 
 angular.module('tweetabaseApp')
-  .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'options', function ($scope, $modalInstance, options){
+  .controller('ConfirmationModalInstanceCtrl', ['$scope', '$modalInstance', 'options', function ($scope, $modalInstance, options){
 		$scope.options = options;
 
 	  $scope.yes = function () {
