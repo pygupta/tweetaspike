@@ -1,10 +1,25 @@
 //Misc stuff
-
+===
 vi /Users/dash/.ssh/known_hosts
-
+===
 PATH=$PATH:/opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin
-      
+
+===      
 scp -i ~/Desktop/aerospike.pem aerospike-management-console-3.3.1.all.x86_64.deb ubuntu@54.186.252.151:~/.
+===
+
+===
+which java
+(This will return the path of the current java binary. Over here its /usr/bin/java)
+
+ls -alh /usr/bin/java
+
+( This will return true path to the symbolic link. Over here its /etc/alternatives/java.
+
+ls -alh /etc/alternatives/java
+
+( This will return true path to this symbolic link which is actual JAVA HOME path)
+===
 
 //Removed the following from package.json
 
