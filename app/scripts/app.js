@@ -8,7 +8,6 @@ var tweetabaseApp = angular.module('tweetabaseApp', [
   'ui.sortable',
   'LocalStorageModule',
   'angularMoment',
-  'snap',
   'ui.bootstrap',
   'btford.socket-io'
 ]);
