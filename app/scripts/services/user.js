@@ -9,6 +9,10 @@ angular.module('tweetabaseApp')
       var cb = callback || angular.noop;
       // var deferred = $q.defer();
 
+      if (user.email === undefined || user.email === null || user.password === undefined || user.password === null || user.email.trim().length === 0 || user.password.trim().length === 0 )  {
+        return cb({message : 'Please provide Username and Password!'});
+      }
+
       ///Check username uniqueness
       $http.post('/api/checkUsername', {username: user.email}).success(function(response) {
         if (response.status !== 'Ok'){
@@ -22,12 +26,12 @@ angular.module('tweetabaseApp')
               $rootScope.currentUser = user;
               return cb({status : 'Ok'});
             } else {
-              return cb();
+              return cb({message : 'Oops!'});
             }
           });
         } else {
           ///duplicate username
-          return cb({message : 'Username is already taken. Please try again!'});
+          return cb({message : 'Username is already taken. Please try another one!'});
         }
       });
 
