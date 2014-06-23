@@ -67,3 +67,15 @@ files:
       echo "npm install'ing aerospike"
       /opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin/npm install aerospike
       echo "done npm install'ing aerospike"
+ "/opt/elasticbeanstalk/hooks/appdeploy/post/npm-install-java.sh" :
+    mode: "000775"
+    owner: root
+    group: root
+    content: |
+      #!/bin/bash          
+      cd /var/app/current
+      export HOME=/home/ec2-user 
+      echo $HOME
+      echo "npm install'ing java"
+      /opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin/npm install java
+      echo "done npm install'ing java"
