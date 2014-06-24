@@ -12,3 +12,32 @@
 .input-group-btn {
   vertical-align: top;
 }
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \000035;
+  }
+}
+
+.jumbotron {
+  background-color: #e84c3d;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \000039;
+  }
+}
+
+.nav-pills > li > a:hover {
+  background-color: #158CBC;
+  color: #fff;
+}

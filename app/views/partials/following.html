@@ -28,7 +28,7 @@
           </accordion-heading>
           <p ng-repeat="tweets in myFollowee.tweets track by $index">
             <span>{{tweets.tweet}}</span>
-            <span class="pull-right">{{tweets.ts | amCalendar}}</span>
+            <span class="pull-right text-muted">{{tweets.ts | amCalendar}}</span>
           </p>
           <p class="pull-right"><button class="btn btn-danger" ng-click="unfollowConfirmation($index)" aria-label="Remove">Unfollow</button></p>
       </accordion-group>
