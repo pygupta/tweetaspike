@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tweetabaseApp')
-  .controller('NavbarCtrl', ['$scope', '$location', 'auth', 'localStorageService', function ($scope, $location, auth, localStorageService) {
+  .controller('NavbarCtrl', ['$scope', '$location', 'auth', 'localStorageService', 'socket', function ($scope, $location, auth, localStorageService, socket) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/home',
@@ -35,4 +35,9 @@ angular.module('tweetabaseApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    $scope.$on('socket:broadcast', function (event,data) {
+      console.log(data.tweet);
+    });
+
   }]);

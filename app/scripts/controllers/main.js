@@ -60,7 +60,7 @@ angular.module('tweetabaseApp')
 		$scope.$on('socket:broadcast', function (event,data) {
 			// console.log(event.name);
 			var showTweet = false;
-			//check is the new tweet is from a user that current user is following. if so, show alert
+			//check if the new tweet is from a user that current user is following. if so, show alert
 			for (var i = 0; i < $scope.myFollowingList.length; i++)  {
 				if ($scope.myFollowingList[i].handle === data.uid)  {
 					showTweet = true;

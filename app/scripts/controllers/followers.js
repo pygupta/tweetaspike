@@ -75,8 +75,7 @@ angular.module('tweetabaseApp')
 		};
 
 		$scope.follow = function (toFollow) {
-    	$scope.myFollowingList.unshift({handle: toFollow, tweets:[]});
-    	// console.log($scope.myFollowingList);
+			$scope.myFollowingList.unshift({handle: toFollow, tweets:[]});
 			following.follow({
 					uid: uid,
 					followingList: $scope.myFollowingList,
