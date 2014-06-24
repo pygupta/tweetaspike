@@ -14,6 +14,7 @@
 			    	<span>{{tweets.tweet}}</span>
 			    	<span class="pull-right">{{tweets.ts | amCalendar}}</span>
 			    </p>
+          <p class="pull-right" ng-bind-html="myFollower.handle | followFollowing:myFollowingList"></p>
 			</accordion-group>
 		</accordion>
     <h4 class="text-muted text-center" ng-show="!myFollowersList.length">You don't have any followers yet! Don't worry though, all you have to do is start <a href='/following'>following</a> someone and they'll likely follow you!:)</h4>
