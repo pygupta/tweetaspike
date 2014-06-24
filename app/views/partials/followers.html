@@ -2,7 +2,7 @@
 
 <div class="container">
 
-  <h3>My Followers</h3>
+  <h3 ng-show="myFollowersList.length">My Followers</h3>
 
   <div ng-model="myFollowersList">
 	  <accordion close-others="oneAtATime">
@@ -16,6 +16,7 @@
 			    </p>
 			</accordion-group>
 		</accordion>
+    <h4 class="text-muted text-center" ng-show="!myFollowersList.length">You don't have any followers yet! Don't worry though, all you have to do is start <a href='/following'>following</a> someone and they'll likely follow you!:)</h4>
   </div>
 
 </div>

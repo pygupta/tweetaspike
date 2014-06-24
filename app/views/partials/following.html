@@ -18,7 +18,7 @@
   </div>
   <p></p>
 
-  <h3>I'm following</h3>
+  <h3 ng-show="myFollowingList.length">I'm following</h3>
 
   <div>
     <accordion close-others="oneAtATime">
@@ -33,6 +33,7 @@
           <p class="pull-right"><button class="btn btn-danger" ng-click="unfollowConfirmation($index)" aria-label="Remove">Unfollow</button></p>
       </accordion-group>
     </accordion>
+    <h4 class="text-muted text-center" ng-show="!myFollowingList.length">You are not following anyone yet! When you start following someone you will see their tweetaspikes and also get alerts!:)</h4>
   </div>
 
 </div>

@@ -6,7 +6,7 @@
   <form role="form" ng-submit="addTweet()">
     <div class="row">
       <div class="input-group">
-        <input type="text" ng-model="myTweet" placeholder="What needs to be tweetaspike'd?" class="form-control">
+        <input type="text" ng-model="myTweet" placeholder="What would you like to tweetaspike?" class="form-control">
         <span class="input-group-btn">
           <input type="submit" class="btn btn-primary" value="Add">
         </span>
@@ -15,7 +15,7 @@
   </form>
   <p></p>
 
-  <h3>My Tweets</h3>
+  <h3 ng-show="myTweets.length">My Tweetaspikes</h3>
 
   <div ui-sortable ng-model="tweets">
     <p class="input-group" ng-repeat="myTweet in myTweets track by $index" style="padding:5px 10px; cursor: move;">
@@ -25,5 +25,6 @@
         <button class="btn btn-danger" ng-click="removeTweet($index)" aria-label="Remove">X</button>
       </span>
     </p>
+    <h4 class="text-muted text-center" ng-show="!myTweets.length">A Tweetaspike is very similar to writing a tweet -- only better because there is no limit on number of characters!:)</h4>
   </div>
 </div>

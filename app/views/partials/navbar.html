@@ -1,5 +1,5 @@
 <div class="header" ng-controller="NavbarCtrl">
-  <h5 class="text-muted">Welcome, {{uid}}!</h5>
+  <h5 class="text-muted text-success">Welcome, {{uid}}!</h5>
   <ul class="nav nav-pills pull-right">
     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
         <a ng-if="item.title == 'Logout'" ng-href="#" ng-click="logout()">{{item.title}}</a>
