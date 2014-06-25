@@ -41,3 +41,17 @@
   background-color: #158CBC;
   color: #ffffff;
 }
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000314;
+  }
+}
+
+.main-content {
+  min-height: 700px;
+}
