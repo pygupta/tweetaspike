@@ -24,21 +24,7 @@
 }
 
 .jumbotron {
-  background-color: #e84c3d;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
-  }
-
-  line {
-    font-family: \000039;
-  }
-}
-
-.nav-pills > li > a:hover {
-  background-color: #158CBC;
+  background-color: #c31618;
   color: #ffffff;
 }
 
@@ -48,10 +34,42 @@
   }
 
   line {
-    font-family: \0000314;
+    font-family: \0000310;
+  }
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: #c31618;
+  color: #ffffff;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000315;
   }
 }
 
 .main-content {
   min-height: 650px;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000319;
+  }
+}
+
+.text-aerospike {
+  color: #c31618;
 }
