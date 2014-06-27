@@ -9,8 +9,8 @@ angular.module('tweetabaseApp')
 		$scope.myTweets = [];
 
 		$scope.retrieveTweets = function	() {
-      $http.post('/api/retrieveTweets', {uid: uid}).success(function(response) {
-        // console.log('/api/retrieveTweets response: ' + JSON.stringify(response));
+      $http.post('/api/jretrieveTweets', {uid: uid}).success(function(response) {
+        console.log('/api/jretrieveTweets response: ' + JSON.stringify(response));
         if (response.status === 'Ok')	{
 					// console.log(response.tweets);
 					$scope.myTweets = response.tweets;
