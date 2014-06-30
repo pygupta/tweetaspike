@@ -21,6 +21,15 @@ ls -alh /etc/alternatives/java
 ( This will return true path to this symbolic link which is actual JAVA HOME path)
 ===
 
+
+//Removed the following from Gruntfile.js under watch >> livereload >> files:
+
+          '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
+          '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+          '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+
+
 //Removed the following from package.json
 
     "grunt-karma": "~0.6.2",
