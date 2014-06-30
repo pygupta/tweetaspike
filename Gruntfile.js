@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
-          livereload: true
+          livereload: false
         }
       },
       mochaTest: {
@@ -78,7 +78,7 @@ module.exports = function (grunt) {
         ],
 
         options: {
-          livereload: true
+          livereload: false
         }
       },
       express: {
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
-          livereload: true,
+          livereload: false,
           nospawn: true //Without this option specified express won't be reloaded
         }
       }
