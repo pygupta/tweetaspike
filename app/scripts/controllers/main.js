@@ -9,8 +9,8 @@ angular.module('tweetabaseApp')
 		$scope.myTweets = [];
 
 		$scope.retrieveTweets = function	() {
-      $http.post('/api/jretrieveTweets', {uid: uid}).success(function(response) {
-        console.log('/api/jretrieveTweets response: ' + JSON.stringify(response));
+      $http.post('/api/retrieveTweets', {uid: uid}).success(function(response) {
+        // console.log('/api/retrieveTweets response: ' + JSON.stringify(response));
         if (response.status === 'Ok')	{
 					// console.log(response.tweets);
 					$scope.myTweets = response.tweets;
@@ -34,18 +34,22 @@ angular.module('tweetabaseApp')
 
 		$scope.retrieveFollowing();
 
-		// $watch listener to watch for changes in the value of $scope.myTweets. If a tweet is added or removed, trigger db sync'd
-		$scope.$watch('myTweets', function () {
-		}, true);
-
 		$scope.addTweet = function () {
+
+			$scope.errors = '';
+
+      if ($scope.myTweet === undefined || $scope.myTweet.trim().length === 0)  {
+      	$scope.errors = 'Please enter what would you like to tweetaspike';
+        return;
+      }
+
 			var tweetObject = {tweet: $scope.myTweet, ts: new Date()};
 			$scope.myTweets.unshift(tweetObject);
 			$scope.myTweet = '';
       $http.post('/api/updateTweets', {uid: uid, tweets: $scope.myTweets}).success(function(response) {
         // console.log('/api/updateTweets response: ' + JSON.stringify(response));
       });
-      //this delegates to the Socket.IO client API emit method and sends our message
+      //this delegates to the Socket.IO client API emit method and sends the post
       //see server.js for the listener
       socket.emit('tweet',{uid: uid, tweet: tweetObject.tweet});
 		};
