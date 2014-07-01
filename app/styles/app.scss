@@ -1,15 +1,22 @@
+$aerospike-red: #c31618;
+
 .input-group-addon, .input-group-btn {	
 	vertical-align: top;
 }
 
 .jumbotron	{
-	background-color: #c31618;
+	background-color: $aerospike-red;
 	color: #ffffff;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li>a:hover, .nav-pills>li.active>a:focus	{
-	background-color: #c31618;
-	color:	#ffffff;
+	background-color: #ffffff;
+	color:	#000000;
+	border-bottom: 4px solid red;
+}
+
+.nav-pills > li > a {
+	border-radius: 0px;
 }
 
 .main-content	{
@@ -17,5 +24,5 @@
 }
 
 .text-aerospike	{
-	color: #c31618;
+	color: $aerospike-red;
 }

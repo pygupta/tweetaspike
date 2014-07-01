@@ -4,7 +4,7 @@
   }
 
   line {
-    font-family: \000031;
+    font-family: \000033;
   }
 }
 
@@ -19,7 +19,7 @@
   }
 
   line {
-    font-family: \000035;
+    font-family: \000037;
   }
 }
 
@@ -34,7 +34,7 @@
   }
 
   line {
-    font-family: \0000310;
+    font-family: \0000312;
   }
 }
 
@@ -42,8 +42,9 @@
 .nav-pills > li.active > a:hover,
 .nav-pills > li > a:hover,
 .nav-pills > li.active > a:focus {
-  background-color: #c31618;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
+  border-bottom: 4px solid red;
 }
 
 @media -sass-debug-info {
@@ -52,7 +53,21 @@
   }
 
   line {
-    font-family: \0000315;
+    font-family: \0000318;
+  }
+}
+
+.nav-pills > li > a {
+  border-radius: 0px;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000322;
   }
 }
 
@@ -66,7 +81,7 @@
   }
 
   line {
-    font-family: \0000319;
+    font-family: \0000326;
   }
 }
 
