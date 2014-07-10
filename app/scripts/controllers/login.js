@@ -30,4 +30,10 @@ angular.module('tweetabaseApp')
         // });
       }
     };
+
+    $scope.signInUsingTwitter = function()  {
+      auth.signInUsingTwitter({
+      }, function(response) {
+      });
+    };
   }]);

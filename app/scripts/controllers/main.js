@@ -39,7 +39,7 @@ angular.module('tweetabaseApp')
 			$scope.errors = '';
 
       if ($scope.myTweet === undefined || $scope.myTweet.trim().length === 0)  {
-      	$scope.errors = 'Please enter what would you like to tweetaspike';
+				$scope.errors = 'Please enter what would you like to tweetaspike';
         return;
       }
 

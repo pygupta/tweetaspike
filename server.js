@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express'),
+	cors = require('cors'),
 	http = require('http');
 
 /**
@@ -16,6 +17,8 @@ var config = require('./lib/config/config');
 var app = express();
 var http = http.Server(app);
 var io = require('socket.io')(http);
+
+app.use(cors());
 
 require('./lib/config/express')(app);
 require('./lib/routes')(app);
