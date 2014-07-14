@@ -172,5 +172,5 @@ function getUsersPosts()  {
   });
 }
 
-//seedUsersPosts();
-getUsersPosts();
+seedUsersPosts();
+//getUsersPosts();
