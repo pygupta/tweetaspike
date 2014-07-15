@@ -1,9 +1,15 @@
 var loadtest = require('loadtest');
+var args = require('yargs').argv;;
+
+// console.log(args);
+var maxRequests = args.r ? args.r : 100;
+var uid = args.u ? args.u : 'dash';
+var server = args.s ? args.s : 'http://localhost:9000/'
+
 var options = {
-    url: 'http://localhost:9000/api/retrieveTweets?uid=dash',
-    maxRequests: 100,
-    method: 'post',
-    body: 'dash'
+    url: server+'api/retrieveTweets?uid='+uid,
+    maxRequests: maxRequests,
+    method: 'post'
 };
 loadtest.loadTest(options, function(error, result)
 {

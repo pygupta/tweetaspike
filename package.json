@@ -58,7 +58,8 @@
     "ansi-styles": "^1.1.0",
     "has-color": "^0.1.7",
     "strip-ansi": "^0.3.0",
-    "loadtest": "^0.2.11"
+    "loadtest": "^0.2.11",
+    "yargs": "^1.2.6"
   },
   "engines": {
     "node": ">=0.10.21"
