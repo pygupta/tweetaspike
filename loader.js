@@ -121,7 +121,7 @@ function seedUsersPosts()  {
 
     key = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.tweetsTable,'uid:usr'+uid+':tweets');
 
-    console.log(i + " ===== " + uid);
+    console.log("user # " + i + " of " + end + " ===== adding tweets for usr" + uid);
     // console.log(tweets);
 
     // add record to the database
