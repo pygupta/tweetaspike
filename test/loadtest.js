@@ -11,6 +11,9 @@ var options = {
     maxRequests: maxRequests,
     method: 'post'
 };
+
+console.log(options);
+
 loadtest.loadTest(options, function(error, result)
 {
     if (error)

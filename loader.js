@@ -32,8 +32,8 @@ client.connect(function (error) {
 });
 
 function seedUsers()  {
-  var start = 400001;
-  var end = 425000;
+  var start = 900000;
+  var end = 1000000;
   var key;
   var uid;
   var userRecord;
