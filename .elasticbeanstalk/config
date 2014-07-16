@@ -1,15 +1,13 @@
 [global]
-ApplicationName=tweetaspike
-ApplicationVersionName=Sample Application
-AwsCredentialFile=/Users/dash/.elasticbeanstalk/aws_credential_file
+ApplicationName=tweetaspike3
 DevToolsEndpoint=git.elasticbeanstalk.us-west-2.amazonaws.com
-EnvironmentName=tweetaspike-env
+EnvironmentName=tweetaspike3-env
 EnvironmentTier=WebServer::Standard::1.0
-EnvironmentType=SingleInstance
+EnvironmentType=LoadBalanced
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=/Users/dash/Apps/tweetaspike/.elasticbeanstalk/optionsettings.tweetaspike-env
+OptionSettingFile=/Users/dash/Apps/tweetabase/.elasticbeanstalk/optionsettings.tweetaspike3-env
 RdsEnabled=No
 Region=us-west-2
 ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
-SolutionStack=64bit Amazon Linux 2014.03 v1.0.2 running Node.js
+SolutionStack=64bit Amazon Linux 2014.03 v1.0.4 running Node.js
 
