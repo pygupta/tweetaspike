@@ -1,3 +1,13 @@
+var args = require('yargs').argv;;
+//console.log(args);
+var f = args.f;
+
+if (f === undefined) { 
+  console.log('\n::U::s::a::g::e:: Yo, here is how to use this thang!');
+  console.log('node loader.js -f [putusers] || [puttweets] || [getusers] || [gettweets]\n');
+  return;
+}
+
 var aerospike = require('aerospike');
 var aerospikeConfig = {
     hosts: [ { addr: 'ec2-54-186-252-151.us-west-2.compute.amazonaws.com', port: 3000 } ]
@@ -18,16 +28,17 @@ var aerospikeDBParams = (function() {
   };
 })();
 
-// Connect to the cluster.
+// Connect to the cluster
 var client = aerospike.client(aerospikeConfig);
-client.connect(function (error) {
-  if ( error.status === aerospike.status.AEROSPIKE_OK ) {
+client.connect(function (response) {
+  if ( response.code === 0) {
     // handle success
-    console.log(client);
+    console.log("\nConnection to Aerospike cluster succeeded!\n");
   }
   else {
     // handle failure
-    console.error(error);
+    console.log("\nConnection to Aerospike cluster failed!\n");
+    console.log(response);
   }
 });
 
@@ -109,7 +120,7 @@ function seedUsersPosts()  {
   var end = Math.floor((Math.random() * 100000) + 1);
   var key;
   var uid;
-  var randomTweets = ['coffee is for closers!','lets get this party started!','nothing happened today :(',"you got school'd, yo",'yo, i got told','i love my dog',"what's up san fran","what's up nyc",'why you gotta hate','dont hate the player...','i dont always tweet, but when i do it is on tweetaspike'];
+  var randomTweets = ['For just $1 you get a half price download of half of the song. You will be able to listen to it just once.','People tell me my body looks like a melted candle','Come on movie! Make it start!','Byaaaayy','Please, please, win! Meow, meow, meow!','Put. A. Bird. On. It.','A weekend wasted is a weekend well spent','Would you like to super spike your meal?','We have a mean no-no-bring-bag up here on aisle two.','SEEK: See, Every, EVERY, Kind... of spot','We can order that for you. It will take a year to get there.','If you are pregnant, have a soda.','Hear that snap? Hear that clap?','Follow me and I may follow you','Which is the best cafe in Portland? Discuss...','Portland Coffee is for closers!','Lets get this party started!','How about them portland blazers!',"You got school'd, yo",'I love animals','I love my dog',"What's up Portland",'Which is the best cafe in Portland? Discuss...','I dont always tweet, but when I do it is on Tweetaspike'];
   var tweets;
 
   for (var i = start; i <= end; i++) {
@@ -177,7 +188,6 @@ function getUsersPosts()  {
   var end = Math.floor((Math.random() * 100000) + 1);
   var key;
   var uid;
-  var tweets;
 
   for (var i = start; i <= end; i++) {
     uid = Math.floor((Math.random() * 1000000) + 1);
@@ -200,21 +210,43 @@ function getUsersPosts()  {
   };
 }
 
+function getUsers()  {
+  var start = Math.floor((Math.random() * 1) + 1);
+  var end = Math.floor((Math.random() * 100000) + 1);
+  var key;
+  var uid;
 
-var args = require('yargs').argv;;
-//console.log(args);
-var f = args.f;
+  for (var i = start; i <= end; i++) {
+    uid = Math.floor((Math.random() * 1000000) + 1);
 
-if (f === 'seedusers') { 
-  seedUsers();
-} else if (f === 'seedtweets')  {
-  seedUsersPosts();
-} else if (f === 'getusertweets')  {
-  getUsersPosts();
-} else if (f === 'getbatchusertweets')  {
-  getBatchUsersPosts();
-} else {
-  console.log('Usage -fn [seedusers] || [seedtweets] || [getusertweets] || [getbatchusertweets]');
-  return;
+    key = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.usersTable,uid);
+
+    console.log("user # " + i + " of " + end + " ===== reading usr" + uid);
+
+    client.get(key, function(err, rec, meta) {
+        // Check for errors
+        if ( err.code === aerospike.status.AEROSPIKE_OK ) {
+          // The record was successfully read.
+          // console.log(rec, meta);
+        }
+        else {
+          // An error occurred
+          // console.error('retrieveTweets error:', err);
+        }
+    });
+  };
 }
 
+if (f === 'putusers') { 
+  seedUsers();
+} else if (f === 'puttweets')  {
+  seedUsersPosts();
+} else if (f === 'getusers')  {
+  getUsers();
+} else if (f === 'gettweets')  {
+  getUsersPosts();
+} else {
+  console.log('\n::U::s::a::g::e:: Yo, here is how to use this thang!');
+  console.log('node loader.js -f [putusers] || [puttweets] || [getusers] || [gettweets]\n');
+  return;
+}

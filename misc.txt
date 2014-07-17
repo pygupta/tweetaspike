@@ -4,8 +4,24 @@ vi /Users/dash/.ssh/known_hosts
 ===
 PATH=$PATH:/opt/elasticbeanstalk/node-install/node-v0.10.21-linux-x64/bin
 
-===      
+===     
+copy local file to remote server
+
+scp -i ~/Desktop/aerospike.pem loader.js ec2-user@54.191.128.0:/var/app/current
+
 scp -i ~/Desktop/aerospike.pem aerospike-management-console-3.3.1.all.x86_64.deb ubuntu@54.186.252.151:~/.
+===
+
+===
+change file ownership
+
+chown NEWUSER FILENAME
+===
+
+===
+start node server and be able to end/quit ssh session
+
+nohup node server.js > ~/bar.log &
 ===
 
 ===

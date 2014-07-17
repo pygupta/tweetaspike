@@ -37,7 +37,7 @@ angular.module('tweetabaseApp')
     };
 
     $scope.$on('socket:broadcast', function (event,data) {
-      console.log(data.tweet);
+      // console.log(data.tweet);
     });
 
   }]);

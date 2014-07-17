@@ -1,5 +1,7 @@
 'use strict';
 
+var tweetInterval;
+
 var tweetabaseApp = angular.module('tweetabaseApp', [
   'ngCookies',
   'ngResource',
@@ -85,6 +87,11 @@ tweetabaseApp
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
       // console.log(next.authenticate);
+
+      if (tweetInterval)  {
+        clearInterval(tweetInterval);
+      }
+
       if (next.authenticate && !auth.isLoggedIn()) {
         // console.log('gonna log you out!');
         $location.path('/login');

@@ -35,7 +35,6 @@ angular.module('tweetabaseApp')
 		$scope.retrieveFollowing();
 
 		$scope.addTweet = function () {
-
 			$scope.errors = '';
 
       if ($scope.myTweet === undefined || $scope.myTweet.trim().length === 0)  {
@@ -85,6 +84,33 @@ angular.module('tweetabaseApp')
 				});
 			}
 		});
+
+		// auto-tweet from one of the users you are following
+		$scope.init = function() {
+			tweetInterval = setInterval(function()	{
+				console.log('hello');
+				// console.log($scope.myFollowingList);
+
+				if ($scope.myFollowingList.length > 0)	{
+					var randomTweets = ['For just $1 you get a half price download of half of the song and listen to it just once.','People tell me my body looks like a melted candle','Come on movie! Make it start!','Byaaaayy','Please, please, win! Meow, meow, meow!','Put. A. Bird. On. It.','A weekend wasted is a weekend well spent','Would you like to super spike your meal?','We have a mean no-no-bring-bag up here on aisle two.','SEEK: See, Every, EVERY, Kind... of spot','We can order that for you. It will take a year to get there.','If you are pregnant, have a soda.','Hear that snap? Hear that clap?','Follow me and I may follow you','Which is the best cafe in Portland? Discuss...','Portland Coffee is for closers!','Lets get this party started!','How about them portland blazers!','I love animals','I love my dog','What\'s up Portland','Which is the best cafe in Portland? Discuss...','I dont always tweet, but when I do it is on Tweetaspike'];
+					var totalUsers = $scope.myFollowingList.length;
+					var totalTweets = randomTweets.length;
+					var followingUID;
+					var randomTweet;
+
+					followingUID = $scope.myFollowingList[Math.floor((Math.random() * (totalUsers - 1)) + 0)].handle;
+					randomTweet = randomTweets[Math.floor((Math.random() * (totalTweets - 1)) + 0)];
+
+		      $http.post('/api/createTweet', {uid: followingUID, tweet: randomTweet}).success(function(response) {
+		        // console.log('/api/createTweet response: ' + JSON.stringify(response));
+		      });
+		      //this delegates to the Socket.IO client API emit method and sends the post
+		      //see server.js for the listener
+		      socket.emit('tweet',{uid: followingUID, tweet: randomTweet});
+				}
+
+			}, 30000);
+		};
 
   }]);
 
