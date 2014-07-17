@@ -143,9 +143,9 @@ function randomDate(start, end) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toString();
 }
 
-function getUsersPosts()  {
-  var start = Math.floor((Math.random() * 21000) + 1);
-  var end = Math.floor((Math.random() * 30000) + 1);
+function getBatchUsersPosts()  {
+  var start = Math.floor((Math.random() * 1) + 1);
+  var end = Math.floor((Math.random() * 100000) + 1);
   var keys = [];
   var tweets;
 
@@ -166,11 +166,55 @@ function getUsersPosts()  {
       }
     }
     else {
-      console.log("getUsersPosts error: ", err);
+      console.log("getBatchUsersPosts error: ", err);
     }
     client.close();
   });
 }
 
-seedUsersPosts();
-//getUsersPosts();
+function getUsersPosts()  {
+  var start = Math.floor((Math.random() * 1) + 1);
+  var end = Math.floor((Math.random() * 100000) + 1);
+  var key;
+  var uid;
+  var tweets;
+
+  for (var i = start; i <= end; i++) {
+    uid = Math.floor((Math.random() * 1000000) + 1);
+
+    key = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.tweetsTable,'uid:usr'+uid+':tweets');
+
+    console.log("user # " + i + " of " + end + " ===== reading tweets for usr" + uid);
+
+    client.get(key, function(err, rec, meta) {
+        // Check for errors
+        if ( err.code === aerospike.status.AEROSPIKE_OK ) {
+          // The record was successfully read.
+          // console.log(rec, meta);
+        }
+        else {
+          // An error occurred
+          // console.error('retrieveTweets error:', err);
+        }
+    });
+  };
+}
+
+
+var args = require('yargs').argv;;
+//console.log(args);
+var f = args.f;
+
+if (f === 'seedusers') { 
+  seedUsers();
+} else if (f === 'seedtweets')  {
+  seedUsersPosts();
+} else if (f === 'getusertweets')  {
+  getUsersPosts();
+} else if (f === 'getbatchusertweets')  {
+  getBatchUsersPosts();
+} else {
+  console.log('Usage -fn [seedusers] || [seedtweets] || [getusertweets] || [getbatchusertweets]');
+  return;
+}
+
