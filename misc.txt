@@ -1,4 +1,40 @@
 //Misc stuff
+
+===
+Script to install nodejs on Amazon AMI EC2 instances
+
+cd
+sudo yum -y install gcc-c++ make openssl-devel git
+git clone git://github.com/joyent/node.git
+cd node
+git checkout v0.10.26
+./configure --prefix=/usr
+make
+sudo make install
+===
+
+===
+
+manually copying styles, scripts etc. (from tweetabase folder)
+
+scp -i ~/Desktop/aerospike.pem -r lib  ec2-user@54.187.97.104:/var/app/current
+scp -i ~/Desktop/aerospike.pem -r app  ec2-user@54.187.97.104:/var/app/current
+
+scp -i ~/Desktop/aerospike.pem -r .tmp  ec2-user@54.191.128.0:/var/app/current
+scp -i ~/Desktop/aerospike.pem -r .sass-cache  ec2-user@54.191.128.0:/var/app/current
+
+scp -i ~/Desktop/aerospike.pem app/styles/main.scss ec2-user@54.191.128.0:/var/app/current/app/styles
+scp -i ~/Desktop/aerospike.pem app/styles/app.scss ec2-user@54.191.128.0:/var/app/current/app/styles
+
+scp -i ~/Desktop/aerospike.pem app/views/partials/main.html ec2-user@54.191.128.0:/var/app/current/app/views/partials
+
+scp -i ~/Desktop/aerospike.pem app/scripts/controllers/main.js ec2-user@54.191.128.0:/var/app/current/app/scripts/controllers
+
+scp -i ~/Desktop/aerospike.pem autotweet.js ec2-user@54.191.128.0:/var/app/current
+scp -i ~/Desktop/aerospike.pem loader.js ec2-user@54.191.128.0:/var/app/current
+scp -i ~/Desktop/aerospike.pem misc.txt ec2-user@54.191.128.0:/var/app/current
+===
+
 ===
 vi /Users/dash/.ssh/known_hosts
 ===

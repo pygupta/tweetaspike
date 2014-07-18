@@ -2,20 +2,22 @@
 
 <div class="container" data-ng-init="init()">
 
-  <!-- Tweet input -->
-  <form role="form" ng-submit="addTweet()">
-    <div class="row">
-      <div class="input-group">
-        <input type="text" ng-model="myTweet" placeholder="What would you like to tweetaspike?" class="form-control">
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Add">
-        </span>
+  <div>
+    <!-- Tweet input -->
+    <form role="form" ng-submit="addTweet()">
+      <div class="row">
+        <div class="input-group">
+          <input type="text" ng-model="myTweet" placeholder="What would you like to tweetaspike?" class="form-control">
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary" value="Add">
+          </span>
+        </div>
+        <div class="form-group has-error text-center">
+          <p class="help-block">{{ errors }}</p>
+        </div>
       </div>
-      <div class="form-group has-error text-center">
-        <p class="help-block">{{ errors }}</p>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
   <p></p>
 
   <h3 ng-show="myTweets.length">My Tweetaspikes</h3>
@@ -28,6 +30,15 @@
         <button class="btn btn-danger" ng-click="removeTweet($index)" aria-label="Remove">X</button>
       </span>
     </p>
-    <h4 class="text-muted text-center" ng-show="!myTweets.length">A Tweetaspike is similar to writing a tweet -- only better because there is no limit on number of characters!:)</h4>
+    <h4 class="text-muted text-center" ng-show="!myTweets.length">A Tweetaspike is similar to a tweet -- only better because there is no limit on number of characters!:)</h4>
   </div>
+
+  <div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model='alertStatus'>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+  </div>
+
 </div>

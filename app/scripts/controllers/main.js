@@ -7,6 +7,7 @@ angular.module('tweetabaseApp')
 		var modalInstance = null;
 		$scope.myFollowingList = [];
 		$scope.myTweets = [];
+		$scope.alertStatus = false;
 
 		$scope.retrieveTweets = function	() {
       $http.post('/api/retrieveTweets', {uid: uid}).success(function(response) {
@@ -71,7 +72,7 @@ angular.module('tweetabaseApp')
 				}
 			}
 
-			if (showTweet)	{
+			if (showTweet && $scope.alertStatus)	{
 				modalInstance = $modal.open({
 					templateUrl: 'partials/info_modal.html',
 					controller: 'InfoModalInstanceCtrl',
@@ -105,11 +106,10 @@ angular.module('tweetabaseApp')
 		        // console.log('/api/createTweet response: ' + JSON.stringify(response));
 		      });
 		      //this delegates to the Socket.IO client API emit method and sends the post
-		      //see server.js for the listener
+		      //see server.js for the listener		      
 		      socket.emit('tweet',{uid: followingUID, tweet: randomTweet});
 				}
-
-			}, 30000);
+			}, 3000);
 		};
 
   }]);

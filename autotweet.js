@@ -70,7 +70,7 @@ function tweet()	{
 	var totalUsers = handpickedUsers.length;
 	var totalTweets = randomTweets.length;
 	var uid;
-	var uKey, tKey;
+	var tKey;
 	var randomTweet;
 	var tweets = [];
 
@@ -78,59 +78,44 @@ function tweet()	{
 	// 	console.log('hello');
 	// }, 5000);
 
-	var t = new timer(10000, function()	{
+	var t = new timer(1, function()	{
 		// console.log('hello');
-		uid = handpickedUsers[Math.floor((Math.random() * (totalUsers - 1)) + 0)];
+		uid = 'usr' + Math.floor((Math.random() * 1000000) + 1);
 		randomTweet = randomTweets[Math.floor((Math.random() * (totalTweets - 1)) + 0)];
 
-    uKey = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.usersTable,uid);
+    //add new tweet
+    tweets = [];
+    tKey = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.tweetsTable,'uid:'+uid+':tweets');
 
-    client.get(uKey, function(err, rec, meta) {
+    //1) retrieve existing tweets for the user, if any
+    client.get(tKey, function(err, rec, meta) {
+      // Check for errors
+      // console.log(rec);
+      if ( err.code === aerospike.status.AEROSPIKE_OK ) {
+        // user has tweets
+        tweets = rec.tweets;
+      }
+      else {
+        // user does not have any tweets                  
+        // console.log(uid + ' does not have any tweets\n');                  
+      }
+      tweets.unshift({tweet: randomTweet, ts: new Date().toString()});
+      // console.log(tweets);
+
+      // add tweets to the database
+      client.put(tKey, {tweets: tweets}, function(err, rec, meta) {
         // Check for errors
+        // console.log(rec);
         if ( err.code === aerospike.status.AEROSPIKE_OK ) {
-          // user record successfully read
-          // console.log(rec);
-
-          //add new tweet
-          tweets = [];
-				  tKey = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.tweetsTable,'uid:'+uid+':tweets');
-
-				  //1) retrieve existing tweets for the user, if any
-				  client.get(tKey, function(err, rec, meta) {
-				      // Check for errors
-				      // console.log(rec);
-				      if ( err.code === aerospike.status.AEROSPIKE_OK ) {
-				          // user has tweets
-				          tweets = rec.tweets;
-				      }
-				      else {
-				          // user does not have any tweets				          
-				          // console.log(uid + ' does not have any tweets\n');				          
-				      }
-		          tweets.unshift({tweet: randomTweet, ts: new Date().toString()});
-		          // console.log(tweets);
-
-						  // add tweets to the database
-						  client.put(tKey, {tweets: tweets}, function(err, rec, meta) {
-						      // Check for errors
-						      console.log(rec);
-						      if ( err.code === aerospike.status.AEROSPIKE_OK ) {
-					          // tweets added successfully
-					          console.log(uid + ' just tweetaspiked : ' + randomTweet);
-						      }
-						      else {
-					          // An error occurred
-					          console.log(uid + ' could not tweetaspiked : ' + randomTweet);
-						      }
-						  });
-				  });
+          // tweets added successfully
+          // console.log(uid + ' just tweetaspiked : ' + randomTweet);
         }
         else {
-          // user record not found read
-          console.error('on snap! ' + uid + ' does not exist in the db');
+          // An error occurred
+          // console.log(uid + ' could not tweetaspiked : ' + randomTweet);
         }
+      });
     });
-
 	});
 }
 
