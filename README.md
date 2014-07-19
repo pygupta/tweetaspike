@@ -31,7 +31,7 @@ This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='ht
   * <a href='http://angular-ui.github.io/bootstrap/' target='_blank'>Angular UI</a>
 
 **Cloud Deployment (Amazon EC2)**
-  * In-Memory NoSQL Database Servers &mdash; EC2 instances running Ubuntu 12.04
+  * Aerospike's In-Memory NoSQL Database Servers &mdash; EC2 instances running Ubuntu 12.04
   * Web Server &mdash; EC2 instance running Amazon Linux mounted with Node.js EBS application
 
 To learn more about Aerospike's technology, please <strong><a href='http://www.aerospike.com/develop/'>click here</a></strong>. For questions or comments about this app or if you'd like to know how you can get started with your own app leveraging Aerospike's technology, feel free to drop me a line at <strong>dash @ aerospike dot com</strong>.
