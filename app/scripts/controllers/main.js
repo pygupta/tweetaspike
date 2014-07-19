@@ -51,7 +51,7 @@ angular.module('tweetabaseApp')
       });
       //this delegates to the Socket.IO client API emit method and sends the post
       //see server.js for the listener
-      socket.emit('tweet',{uid: uid, tweet: tweetObject.tweet});
+      socket.emit('tweet',{uid: uid, tweet: tweetObject.tweet, realTweet: true});
 		};
 
 		$scope.removeTweet = function (index) {
@@ -72,7 +72,7 @@ angular.module('tweetabaseApp')
 				}
 			}
 
-			if (showTweet && $scope.alertStatus)	{
+			if (showTweet && (data.realTweet || $scope.alertStatus))	{
 				modalInstance = $modal.open({
 					templateUrl: 'partials/info_modal.html',
 					controller: 'InfoModalInstanceCtrl',
@@ -107,7 +107,7 @@ angular.module('tweetabaseApp')
 		      });
 		      //this delegates to the Socket.IO client API emit method and sends the post
 		      //see server.js for the listener		      
-		      socket.emit('tweet',{uid: followingUID, tweet: randomTweet});
+		      socket.emit('tweet',{uid: followingUID, tweet: randomTweet, realTweet: false});
 				}
 			}, 3000);
 		};

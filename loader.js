@@ -8,9 +8,15 @@ if (f === undefined) {
   return;
 }
 
+var aerospike1C  = 'ec2-54-186-252-151.us-west-2.compute.amazonaws.com'
+var aerospike2C = 'ec2-54-191-145-193.us-west-2.compute.amazonaws.com'
+var aerospike3C = 'ec2-54-191-106-122.us-west-2.compute.amazonaws.com' 
+var aerospike4 = 'ec2-54-191-1-92.us-west-2.compute.amazonaws.com' 
+var aerospike5 = 'ec2-54-191-162-116.us-west-2.compute.amazonaws.com'
+
 var aerospike = require('aerospike');
 var aerospikeConfig = {
-    hosts: [ { addr: 'ec2-54-186-252-151.us-west-2.compute.amazonaws.com', port: 3000 } ]
+    hosts: [ { addr: aerospike4, port: 3000 } ]
 };
 var aerospikeDBParams = (function() {
   var dbName = 'test';
