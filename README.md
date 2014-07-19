@@ -1,13 +1,7 @@
 Tweetaspike
 ===========
 
-This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerospike.com/' target='_blank'>Aerospike</a> + Express + Angular + Node. 
-
-**Note:** This sample application is intended to be used as a reference application in a development environment.
-
-* Aerospike's Open Sourced technologies being demonstrated in this app:
-  * Aerospike's In-Memory NoSQL Database
-  * Aerospike's Node.js Client
+This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerospike.com/' target='_blank'>Aerospike</a> + Express + Angular + Node. **Note:** This sample application is intended to be used as a reference application in a development environment.
 
 **Motivations**
 
@@ -24,9 +18,10 @@ This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='ht
   * Followers &mdash; list of users that follow you including their posts
   * Alerts &mdash; real-time alerts when users you are following add new posts
 
-**Cloud Deployment (Amazon EC2)**
-  * In-Memory NoSQL Database Servers &mdash; EC2 instances running Ubuntu 12.04
-  * Web Server &mdash; EC2 instance running Amazon Linux mounted with Node.js EBS application
+**Aerospike's Open Sourced Technologies**
+
+  * Aerospike's In-Memory NoSQL Database
+  * Aerospike's Node.js Client
 
 **Other Technologies**
   * <a href='http://socket.io/' target='_blank'>Socket.io</a>
@@ -34,6 +29,10 @@ This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='ht
   * <a href='http://yeoman.io/' target='_blank'>Yeoman</a>
   * <a href='http://gruntjs.com/' target='_blank'>Grunt</a>
   * <a href='http://angular-ui.github.io/bootstrap/' target='_blank'>Angular UI</a>
+
+**Cloud Deployment (Amazon EC2)**
+  * In-Memory NoSQL Database Servers &mdash; EC2 instances running Ubuntu 12.04
+  * Web Server &mdash; EC2 instance running Amazon Linux mounted with Node.js EBS application
 
 To learn more about Aerospike's technology, please <strong><a href='http://www.aerospike.com/develop/'>click here</a></strong>. For questions or comments about this app or if you'd like to know how you can get started with your own app leveraging Aerospike's technology, feel free to drop me a line at <strong>dash @ aerospike dot com</strong>.
 
