@@ -1,7 +1,7 @@
 Tweetaspike
 ===========
 
-This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerospike.com/' target='_blank'>Aerospike</a> + Express + Angular + Node. **Note:** This sample application is intended to be used as a reference application in a development environment.
+This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerospike.com/' target='_blank'>Aerospike</a> + Express + Angular + Node. **Note:** This sample application is intended to be used only as a reference and is not to be confused with any other service, product, or app offered by any company or institute including Aerospike.
 
 **Motivations**
 
@@ -24,6 +24,9 @@ This **sample** application is built using ASEAN (/a-shawn/) Stack - <a href='ht
   * Aerospike's Node.js Client
 
 **Other Technologies**
+  * <a href='https://angularjs.org/' target='_blank'>AngularJS</a>
+  * <a href='http://nodejs.org/' target='_blank'>Node.js</a>
+  * <a href='http://expressjs.com/' target='_blank'>Express</a>
   * <a href='http://socket.io/' target='_blank'>Socket.io</a>
   * <a href='http://bower.io/' target='_blank'>Bower</a>
   * <a href='http://yeoman.io/' target='_blank'>Yeoman</a>

@@ -1,31 +1,10 @@
 var args = require('yargs').argv;;
 // console.log(args);
 
-var aerospike1C  = 'ec2-54-186-252-151.us-west-2.compute.amazonaws.com'
-var aerospike2C = 'ec2-54-191-145-193.us-west-2.compute.amazonaws.com'
-var aerospike3C = 'ec2-54-191-106-122.us-west-2.compute.amazonaws.com' 
-var aerospike4 = 'ec2-54-191-1-92.us-west-2.compute.amazonaws.com' 
-var aerospike5 = 'ec2-54-191-162-116.us-west-2.compute.amazonaws.com'
-
+var asConfig = require('./lib/controllers/aerospike_config');
+var aerospikeConfig = asConfig.aerospikeConfig();
+var aerospikeDBParams = asConfig.aerospikeDBParams();
 var aerospike = require('aerospike');
-var aerospikeConfig = {
-    hosts: [ { addr: aerospike4, port: 3000 } ]
-};
-var aerospikeDBParams = (function() {
-  var dbName = 'test';
-  var usersTable = 'users';
-  var tweetsTable = 'tweets';
-  var followingTable = 'following';
-  var followersTable = 'followers';
-
-  return {
-    dbName: dbName,
-    usersTable: usersTable,
-    tweetsTable: tweetsTable,
-    followingTable: followingTable,
-    followersTable: followersTable
-  };
-})();
 
 // Connect to the cluster
 var client = aerospike.client(aerospikeConfig);
