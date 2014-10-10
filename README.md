@@ -1,7 +1,7 @@
 Tweetaspike
 ===========
 
-This application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerospike.com/' target='_blank'>Aerospike</a> + Express + Angular + Node. 
+This application is built using ASEAN (/a-shawn/) Stack - Aerospike + Express + Angular + Node.
 
 The purpose of this sample application is to show that Aerospike data structures on top of a key-value store are an effective way to write applications with Aerospike as the only database. To demonstrate, this sample describes the design and implementation of a twitter-like application. The code is easy to follow and substantial enough to be a foundation in learning how to leverage Aerospike's technology and it can also be used as a "seed" application that you can expand.
 
@@ -40,7 +40,7 @@ The purpose of this sample application is to show that Aerospike data structures
 
 ### Build
 
-To build the application, run:
+To build the application:
 
 **npm install**
 
@@ -48,13 +48,13 @@ This will resolve all dependencies.
 
 ### Config
 
-In `[aerospike_config.js]`(https://github.com/aerospike/tweetaspike/blob/master/lib/controllers/aerospike_config.js), update **aerospikeCluster** and **aerospikeClusterPort** such that it points to your server running Aerospike Server.
+In [aerospike_config.js](https://github.com/aerospike/tweetaspike/blob/master/lib/controllers/aerospike_config.js), update **aerospikeCluster** and **aerospikeClusterPort** such that it points to your server running Aerospike Server.
 
 ### Run
 
-To run the application, run:
+To run the application:
 
-  $ node server
+**node server**
 
 You should see message **Connection to Aerospike cluster succeeded!**. If not, please make sure your Aerospike Server is running and available. Also confirm that **aerospikeCluster** and **aerospikeClusterPort** are set correctly.
 
