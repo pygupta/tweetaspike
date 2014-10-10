@@ -1,11 +1,11 @@
 Tweetaspike
 ===========
 
-This application is built using ASEAN (/a-shawn/) Stack - Aerospike + Express + Angular + Node.
+This application is built using -- Aerospike + Express + Angular + Node -- ASEAN (/a-shawn/) Stack.
 
 The purpose of this sample application is to show that Aerospike data structures on top of a key-value store are an effective way to write applications with Aerospike as the only database. To demonstrate, this sample describes the design and implementation of a twitter-like application. The code is easy to follow and substantial enough to be a foundation in learning how to leverage Aerospike's technology and it can also be used as a "seed" application that you can expand.
 
-## Application Features
+### Application Features
 
   * Register | Login | Logout
   * Post &mdash; similar to tweets, only better since there's no character limit :)
@@ -15,12 +15,12 @@ The purpose of this sample application is to show that Aerospike data structures
   * Followers &mdash; list of users that follow you including their posts
   * Alerts &mdash; real-time alerts when users you are following add new posts
 
-## Aerospike's Open Sourced Technologies Used
+### Aerospike's Open Sourced Technologies Used
 
   * Aerospike Server
   * Aerospike Node.js Client
 
-## Other Technologies Used
+### Other Technologies Used
   * <a href='https://angularjs.org/' target='_blank'>AngularJS</a>
   * <a href='http://nodejs.org/' target='_blank'>Node.js</a>
   * <a href='http://expressjs.com/' target='_blank'>Express</a>
@@ -30,40 +30,28 @@ The purpose of this sample application is to show that Aerospike data structures
   * <a href='http://gruntjs.com/' target='_blank'>Grunt</a>
   * <a href='http://angular-ui.github.io/bootstrap/' target='_blank'>Angular UI</a>
 
-# Next Step -- Get up and running
+## Next Step -- Get up and running
 
-## Prerequisite
+### Prerequisite
 
 - [Aerospike Server](http://www.aerospike.com/download/server/latest) – The server should be running and accessible from this app.
 
-## Usage
+### Usage
 
-### Build
+#### Build
 
-To build the application:
+To build the application and resolve dependencies, run command: **npm install**
 
-**npm install**
-
-This will resolve all dependencies.
-
-### Config
+#### Config
 
 In [aerospike_config.js](https://github.com/aerospike/tweetaspike/blob/master/lib/controllers/aerospike_config.js), update **aerospikeCluster** and **aerospikeClusterPort** such that it points to your server running Aerospike Server.
 
-### Run
+#### Run
 
-To run the application:
-
-**node server**
+To run the application, use command: **node server**
 
 You should see message **Connection to Aerospike cluster succeeded!**. If not, please make sure your Aerospike Server is running and available. Also confirm that **aerospikeCluster** and **aerospikeClusterPort** are set correctly.
 
-If all is well, open web browser to:
-
-  [http://localhost:9000](http://localhost:9000)
-
+If all is well, open web browser and point it to: [http://localhost:9000](http://localhost:9000)
 
 To learn more about Aerospike's technology, please <strong><a href='http://www.aerospike.com/docs/'>click here</a></strong>. For questions or comments about this app or if you'd like to know how you can get started with your own app leveraging Aerospike's technology, feel free to drop me a line at <strong>dash @ aerospike dot com</strong>.
-
-
-
