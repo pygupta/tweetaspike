@@ -5,7 +5,7 @@ This application is built using ASEAN (/a-shawn/) Stack - <a href='http://aerosp
 
 The purpose of this sample application is to show that Aerospike data structures on top of a key-value store are an effective way to write applications with Aerospike as the only database. To demonstrate, this sample describes the design and implementation of a twitter-like application. The code is easy to follow and substantial enough to be a foundation in learning how to leverage Aerospike's technology and it can also be used as a "seed" application that you can expand.
 
-**Application Features**
+## Application Features
 
   * Register | Login | Logout
   * Post &mdash; similar to tweets, only better since there's no character limit :)
@@ -15,12 +15,12 @@ The purpose of this sample application is to show that Aerospike data structures
   * Followers &mdash; list of users that follow you including their posts
   * Alerts &mdash; real-time alerts when users you are following add new posts
 
-**Aerospike's Open Sourced Technologies Used**
+## Aerospike's Open Sourced Technologies Used
 
-  * Aerospike's In-Memory NoSQL Database - If you don't have it installed, [click here](http://www.aerospike.com/docs/operations/install) to install it.
-  * Aerospike's Node.js Client
+  * Aerospike Server
+  * Aerospike Node.js Client
 
-**Other Technologies Used**
+## Other Technologies Used
   * <a href='https://angularjs.org/' target='_blank'>AngularJS</a>
   * <a href='http://nodejs.org/' target='_blank'>Node.js</a>
   * <a href='http://expressjs.com/' target='_blank'>Express</a>
@@ -42,7 +42,7 @@ The purpose of this sample application is to show that Aerospike data structures
 
 To build the application, run:
 
-  $ npm install
+**npm install**
 
 This will resolve all dependencies.
 
