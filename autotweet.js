@@ -65,7 +65,7 @@ function tweet()	{
 
 	var t = new timer(1, function()	{
 		// console.log('hello');
-		uid = 'usr' + Math.floor((Math.random() * 1000000) + 1);
+		uid = 'usr' + Math.floor((Math.random() * 100000) + 1);
 		randomTweet = randomTweets[Math.floor((Math.random() * (totalTweets - 1)) + 0)];
 
     //add new tweet

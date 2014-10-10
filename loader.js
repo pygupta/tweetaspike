@@ -28,8 +28,8 @@ client.connect(function (response) {
 });
 
 function seedUsers()  {
-  var start = 900000;
-  var end = 1000000;
+  var start = 1;
+  var end = 100000;
   var key;
   var uid;
   var userRecord;
@@ -109,7 +109,7 @@ function seedUsersPosts()  {
   var tweets;
 
   for (var i = start; i <= end; i++) {
-    uid = Math.floor((Math.random() * 1000000) + 1);
+    uid = Math.floor((Math.random() * 100000) + 1);
     tweets = [];
     tweets.unshift({tweet: randomTweets[Math.floor((Math.random() * 10) + 1)], ts: randomDate(new Date(2014, 0, 1), new Date())});
     tweets.unshift({tweet: randomTweets[Math.floor((Math.random() * 10) + 1)], ts: randomDate(new Date(2014, 0, 1), new Date())});
@@ -175,7 +175,7 @@ function getUsersPosts()  {
   var uid;
 
   for (var i = start; i <= end; i++) {
-    uid = Math.floor((Math.random() * 1000000) + 1);
+    uid = Math.floor((Math.random() * 100000) + 1);
 
     key = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.tweetsTable,'uid:usr'+uid+':tweets');
 
@@ -202,7 +202,7 @@ function getUsers()  {
   var uid;
 
   for (var i = start; i <= end; i++) {
-    uid = Math.floor((Math.random() * 1000000) + 1);
+    uid = Math.floor((Math.random() * 100000) + 1);
 
     key = aerospike.key(aerospikeDBParams.dbName,aerospikeDBParams.usersTable,uid);
 
