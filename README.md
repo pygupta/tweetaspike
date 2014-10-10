@@ -50,7 +50,9 @@ In [aerospike_config.js](https://github.com/aerospike/tweetaspike/blob/master/li
 
 To run the application, use command: **node server**
 
-You should see message **Connection to Aerospike cluster succeeded!**. If not, please make sure your Aerospike Server is running and available. Also confirm that **aerospikeCluster** and **aerospikeClusterPort** are set correctly.
+You should see message **Connection to Aerospike cluster succeeded!**
+
+If you see *Connection to Aerospike cluster failed!*, please make sure your Aerospike Server is running and available. Also confirm that **aerospikeCluster** and **aerospikeClusterPort** are set correctly as described above in the Config section.
 
 If all is well, open web browser and point it to: [http://localhost:9000](http://localhost:9000)
 
