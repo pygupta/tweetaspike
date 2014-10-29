@@ -74,7 +74,7 @@ Sample Record:
 { ns: 'test', set: 'users', key: 'dash' } 
 { uid: 'dash',
   username: 'dash',
-  password***: 'dash',
+  password: 'dash',
   auth: 'c18d1b9a-19fb-4b2b-b4d3-560c8af07ef6' }
 ```
 
@@ -95,4 +95,23 @@ Sample Record:
      { tweet: 'So hot today!', ts: '2014-07-01T05:39:38.136Z' },
      { tweet: 'Hi', ts: '2014-07-01T05:36:04.055Z' } ] }
 ```
+
+##### Followers
+
+Key: "uid:<uid>:followers"
+
+Bin:
+*    followers - Array of Strings (usernames)
+
+Sample Record:
+```
+{ ns: 'test', set: 'followers', key: 'uid:dash:followers’ } 
+{ followers:
+   [ 'joe',
+     'claire',
+     'monica',
+     'srini',
+     'brian'] }
+```
+
 
