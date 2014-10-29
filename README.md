@@ -143,7 +143,7 @@ Note: The empty tweets array gets populated on-demand in the client when user cl
 
 Enforces unique usernames
 *   Requires username and password
-*   Adds Key-Value to look up uid based on *username:<username>* as key
+*   Adds Key-Value to look up uid based on *username:\<username\>* as key
 *   Adds Key-Value to look up password based on *uid:<username>:password* as key
 *   Adds Key-Value to look up auth based on *uid:<username>:auth* as key
 
