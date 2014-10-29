@@ -119,9 +119,7 @@ Sample Record:
 Key: "uid:<uid>:following"
 
 Bin:
-*    following - Array Object
-        tweets: Empty Array (it gets populated on-demand in the client)
-        handle: username stored as String
+*    following - Array of Objects
 
 Sample Record:
 
@@ -136,3 +134,28 @@ Sample Record:
      { tweets: [], handle: 'eva' },
      { tweets: [], handle: 'mark' }] }
 ```
+
+Note: The empty tweets array gets populated on-demand in the client when user clicks / wants to see the tweets for a given user.
+
+#### Application Logic
+
+##### Register
+
+Enforces unique usernames
+*   Requires username and password
+*   Adds Key-Value to look up uid based on username:<username> as key
+*   Adds Key-Value to look up password based on uid:<username>:password as key
+*   Adds Key-Value to look up auth based on uid:<username>:auth as key
+
+##### Login
+*    Check for username:<username> key
+    * If it does not exist, username entered is invalid 
+    * If it exists, check for uid:<username>:password key
+      * If it does not exist, password entered is invalid 
+      * If it exists, compare password entered with password value stored in the bin accessed via uid:<username>:password key
+      * If passwords match:
+        * Look up auth based on uid:<username>:auth as key
+        * Store auth in HTML5 Web/Local Storage
+          * This value is used to check if user is logged in when browsing to various pages within the app. If this value is not found, user is routed back to Login
+          * This value is cleared when user Logs out
+        * Log user in 
