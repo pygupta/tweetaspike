@@ -137,25 +137,58 @@ Sample Record:
 
 Note: The empty tweets array gets populated on-demand in the client when user clicks / wants to see the tweets for a given user.
 
-#### Application Logic
+#### Application Flow
 
 ##### Register
 
 Enforces unique usernames
 *   Requires username and password
-*   Adds Key-Value to look up uid based on username:<username> as key
-*   Adds Key-Value to look up password based on uid:<username>:password as key
-*   Adds Key-Value to look up auth based on uid:<username>:auth as key
+*   Adds Key-Value to look up uid based on *username:<username>* as key
+*   Adds Key-Value to look up password based on *uid:<username>:password* as key
+*   Adds Key-Value to look up auth based on *uid:<username>:auth* as key
 
 ##### Login
-*    Check for username:<username> key
+*    Check for *username:<username>* key
     * If it does not exist, username entered is invalid 
-    * If it exists, check for uid:<username>:password key
+    * If it exists, check for *uid:<username>:password* key
       * If it does not exist, password entered is invalid 
-      * If it exists, compare password entered with password value stored in the bin accessed via uid:<username>:password key
+      * If it exists, compare password entered with password value stored in the bin accessed via *uid:<username>:password* key
       * If passwords match:
-        * Look up auth based on uid:<username>:auth as key
+        * Look up auth based on *uid:<username>:auth* as key
         * Store auth in HTML5 Web/Local Storage
           * This value is used to check if user is logged in when browsing to various pages within the app. If this value is not found, user is routed back to Login
           * This value is cleared when user Logs out
-        * Log user in 
+          * Log user in 
+
+##### New Tweet/Post
+*    Adds new object (tweet/post and timestamp) to array of objects stored and accessed via *uid:<uid>:tweets* key
+
+##### Follow
+*    Adds new object (tweets/posts array and handle of user-to-follow) to array of objects stored and accessed via *uid:<uid-of-current-user>:following* key for the current user
+*    Retrieves followers (array accessed via *uid:<uid-of-user-to-follow>:followers* key) of user-to-follow user and adds current user as a follower 
+
+##### Unfollow
+*    Removes object (tweets/posts array and handle of user-to-unfollow) from array of objects stored and accessed via *uid:<uid-of-current-user>:following* key for the current user
+*    Retrieves followers (array accessed via *uid:<uid-of-user-to-unfollow>:followers* key) of user-to-unfollow user and removes current user as a follower 
+
+##### Following
+*    Shows a list of users that current user is following
+*    On initial load, only the list of `following` users is retrieved using *uid:<uid-of-current-user>:following* key
+*    The tweets/posts of `following` users are retrieved on-demand when user clicks on their row
+
+##### Followers
+*    Shows a list of users that are following current user
+*    On initial load, only the list of `followers` users is retrieved using *uid:<uid-of-current-user>:followers* key
+*    The tweets/posts of `followers` users are retrieved on-demand when user clicks on their row
+
+##### Real-time Alerts
+*    The technology used in this app to deliver real-time alerts is **Socket.io**
+*    The app is setup to listen for `tweet` event -- which is triggered when a new tweet/post gets added by a user. The object sent as a message to Socket.io client emit API looks like `{uid: uid, tweet: tweetText}`
+*    Upon receiving a `tweet` event it then gets emitted out (in our case as a `broadcast` event) to the connected clients along with data object `{uid: uid, tweet: tweetText}` it received
+*    Individual clients are setup to listen on `socket:broadcast` event emitted as described above -- here the listener loops through users that the current user is following and if one of the users’ uid matches that of the data object it received `{uid: uid, tweet: tweetText}`, an alert is displayed
+
+##### Logout
+*    Clears out auth stored in HTML5 Web/Local Storage and routes the user back to Login
+
+
+
