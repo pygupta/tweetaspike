@@ -62,6 +62,7 @@ If all is well, open web browser and point it to: [http://localhost:9000](http:/
 ##### Users
 
 Key: uid
+
 Bins:
 *   uid - String
 *   username - String
@@ -82,6 +83,7 @@ Note: For simplicity password is stored in plain-text
 ##### Tweets
 
 Key: "uid:<uid>:tweets"
+
 Bin:
 *   tweets - Array of Objects 
 
