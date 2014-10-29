@@ -70,7 +70,7 @@ Bins:
 *   auth - String
 
 Sample Record:
-```js
+```
 { ns: 'test', set: 'users', key: 'dash' } 
 { uid: 'dash',
   username: 'dash',
@@ -88,7 +88,7 @@ Bin:
 *   tweets - Array of Objects 
 
 Sample Record:
-```js
+```
 { ns: 'test', set: 'tweets', key: 'uid:dash:tweets' } 
 { tweets:
    [ { tweet: 'Hello Portland!', ts: '2014-07-01T05:49:47.367Z' },
@@ -108,10 +108,31 @@ Sample Record:
 { ns: 'test', set: 'followers', key: 'uid:dash:followers’ } 
 { followers:
    [ 'joe',
-     'claire',
-     'monica',
-     'srini',
-     'brian'] }
+     'jane',
+     'moe',
+     'homer',
+     'peter'] }
 ```
 
+##### Following
 
+Key: "uid:<uid>:following"
+
+Bin:
+*    following - Array Object
+        tweets: Empty Array (it gets populated on-demand in the client)
+        handle: username stored as String
+
+Sample Record:
+
+```
+{ ns: 'test', set: 'following', key: 'uid:dash:following' } 
+{ following:
+   [ { tweets: [], handle: 'claire' },
+     { tweets: [], handle: 'brandon' },
+     { tweets: [], handle: 'donovan' },
+     { tweets: [], handle: 'mary' },
+     { tweets: [], handle: 'mike' },
+     { tweets: [], handle: 'eva' },
+     { tweets: [], handle: 'mark' }] }
+```
