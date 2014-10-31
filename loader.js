@@ -1,4 +1,4 @@
-var args = require('yargs').argv;;
+var args = require('yargs').argv;
 //console.log(args);
 var f = args.f;
 
