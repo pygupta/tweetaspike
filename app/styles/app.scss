@@ -83,3 +83,13 @@ $aerospike-red: #c31618;
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
 }
+
+.admin-panel  {
+    padding-top: 20px;
+    .admin  {
+        font-size: 80px;
+        color: $aerospike-red;
+        text-shadow: -5px -1px 1px rgba(0, 0, 0, 0.35);
+    }    
+}
+

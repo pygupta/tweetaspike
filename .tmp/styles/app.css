@@ -267,3 +267,33 @@
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
 }
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000387;
+  }
+}
+
+.admin-panel {
+  padding-top: 20px;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/dash\/Apps\/tweetabase\/app\/styles\/app\.scss;
+  }
+
+  line {
+    font-family: \0000389;
+  }
+}
+
+.admin-panel .admin {
+  font-size: 80px;
+  color: #c31618;
+  text-shadow: -5px -1px 1px rgba(0, 0, 0, 0.35);
+}

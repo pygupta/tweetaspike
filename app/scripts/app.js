@@ -1,6 +1,6 @@
 'use strict';
 
-var tweetInterval;
+var tweetInterval, statInterval;
 
 var tweetabaseApp = angular.module('tweetabaseApp', [
   'ngCookies',
@@ -43,6 +43,11 @@ tweetabaseApp
       .when('/followers', {
         templateUrl: 'partials/followers.html',
         controller: 'FollowersCtrl',
+        authenticate: true
+      })
+      .when('/admin', {
+        templateUrl: 'partials/admin.html',
+        controller: 'AdminCtrl',
         authenticate: true
       })
       .otherwise({
@@ -90,6 +95,9 @@ tweetabaseApp
 
       if (tweetInterval)  {
         clearInterval(tweetInterval);
+      }
+      if (statInterval)  {
+        clearInterval(statInterval);
       }
 
       if (next.authenticate && !auth.isLoggedIn()) {
