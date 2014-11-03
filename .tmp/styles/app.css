@@ -293,7 +293,7 @@
 }
 
 .admin-panel .admin {
-  font-size: 80px;
+  font-size: 60px;
   color: #c31618;
-  text-shadow: -5px -1px 1px rgba(0, 0, 0, 0.35);
+  text-shadow: -3px -1px 1px rgba(0, 0, 0, 0.35);
 }

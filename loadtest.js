@@ -25,16 +25,30 @@ function seedObjects()  {
 
   for (var i = start; i <= end; i++) {
 	  var record = {uid: "user"+i};
-	  var key = aerospike.key(aerospikeDBParams.dbName,'test',i);
-	  client.put(key, record, cb);
+	  var key = aerospike.key(aerospikeDBParams.dbName,'test',"user"+i);
+	  client.put(key, record, writeHandler);
   }
 }
 
-cb = function (err,rec,meta) {
+writeHandler = function (err,rec,meta) {
   if ( err.code === aerospike.status.AEROSPIKE_OK ) {
-    // The record was successfully created.
+    // handle success
+    // now initiate read
+    var key = aerospike.key(aerospikeDBParams.dbName,'test',rec.key);
+    client.get(key, readHandler);
   } else {
-     console.log('error [row: '+i+'] :'+err);
+    // handle failure
+     console.log('write error :'+err);
+  }
+}
+
+readHandler = function (err,rec,meta) {
+  if ( err.code === aerospike.status.AEROSPIKE_OK ) {
+    // handle success
+     // console.log(rec);
+  } else {
+    // handle failure
+     console.log(err);
   }
 }
 
